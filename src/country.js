@@ -2,10 +2,8 @@ import React from "react";
 import StateList from "./stateList";
 
 export default React.memo(({ name, population, states }) => {
-  console.log("in country");
-
   return (
-    <div>
+    <tbody>
       <tr>
         <td>{name}</td>
         <td>{population}</td>
@@ -15,6 +13,6 @@ export default React.memo(({ name, population, states }) => {
           <StateList states={states} />
         </td>
       </tr>
-    </div>
+    </tbody>
   );
 });

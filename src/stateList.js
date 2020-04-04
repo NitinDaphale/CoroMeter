@@ -2,8 +2,6 @@ import React from "react";
 import State from "./state";
 
 export default React.memo(({ states }) => {
-  console.log("in stateList");
-
   return (
     <table>
       <thead>
@@ -12,9 +10,11 @@ export default React.memo(({ states }) => {
           <th>Population</th>
         </tr>
       </thead>
-      {states.map((s, i) => (
-        <State key={i} state={s} />
-      ))}
+      <tbody>
+        {states.map((s, i) => (
+          <State key={i} state={s} />
+        ))}
+      </tbody>
     </table>
   );
 });

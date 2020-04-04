@@ -61,6 +61,7 @@ export default () => {
 
   return (
     <div>
+      <h1>This is my Corona World Meter </h1>
       <button text="Add Country" onClick={addCountry}>
         Add Country
       </button>
@@ -68,10 +69,12 @@ export default () => {
         Add State
       </button>
       <table>
-        <tr>
-          <th>Country</th>
-          <th>Population</th>
-        </tr>
+        <thead>
+          <tr>
+            <th>Country</th>
+            <th>Population</th>
+          </tr>
+        </thead>
         {countries.map((c, i) => (
           <Country
             key={i}
