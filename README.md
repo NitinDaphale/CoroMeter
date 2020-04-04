@@ -1,2 +1,0 @@
-# CoroMeter
-Created with CodeSandbox
