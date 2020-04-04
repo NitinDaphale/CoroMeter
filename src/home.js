@@ -61,6 +61,7 @@ export default () => {
 
   return (
     <div>
+      <h1>This is my Corona World Meter </h1>
       <button text="Add Country" onClick={addCountry}>
         Add Country
       </button>
