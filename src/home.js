@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Country from "./country";
+import AddCountryFlag from "./addCountry";
+import Container from "@material-ui/core/Container";
 
 export default () => {
   const list = [
@@ -36,6 +38,15 @@ export default () => {
   ];
 
   const [countries, setCountries] = useState(list);
+  const [addCountryFlag, setAddCountryFlag] = useState(false);
+
+  const onClickAddCountry = () => {
+    setAddCountryFlag(true);
+  };
+
+  const onCancelAddCountry = () => {
+    setAddCountryFlag(false);
+  };
 
   const addCountry = () => {
     const newList = [...countries];
@@ -49,7 +60,9 @@ export default () => {
       ],
       people: ["Koirala", "prachand", "abe"]
     });
+
     setCountries(newList);
+    setAddCountryFlag(false);
   };
 
   const addState = () => {
@@ -62,12 +75,22 @@ export default () => {
   return (
     <div>
       <h1>This is my Corona World Meter </h1>
-      <button text="Add Country" onClick={addCountry}>
-        Add Country
-      </button>
-      <button text="Add State" onClick={addState}>
-        Add State
-      </button>
+      {!addCountryFlag && (
+        <Container maxWidth="sm">
+          {!addCountryFlag && (
+            <button text="Add Country" onClick={onClickAddCountry}>
+              Add Country
+            </button>
+          )}
+        </Container>
+      )}
+
+      {addCountryFlag && (
+        <Container>
+          <AddCountryFlag onSubmit={addCountry} onCancel={onCancelAddCountry} />
+        </Container>
+      )}
+
       <table>
         <thead>
           <tr>
