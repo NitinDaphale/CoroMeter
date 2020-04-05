@@ -28,7 +28,6 @@ const HomeToConnect = ({ countries }) => {
       people: ["Koirala", "prachand", "abe"]
     });
 
-    setCountries(newList);
     setAddCountryFlag(false);
   };
 
