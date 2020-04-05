@@ -2,42 +2,9 @@ import React, { useState } from "react";
 import Country from "./country";
 import AddCountryFlag from "./addCountry";
 import Container from "@material-ui/core/Container";
+import { connect } from "react-redux";
 
-export default () => {
-  const list = [
-    {
-      name: "Bharat",
-      population: 1000,
-      states: [
-        { name: "Maharashtra", population: 100 },
-        { name: "Karnatak", population: 200 },
-        { name: "Bihar", population: 300 }
-      ],
-      people: ["nitin", "punam", "kartik"]
-    },
-    {
-      name: "SriLanka",
-      population: 200,
-      states: [
-        { name: "Mugabe", population: 100 },
-        { name: "DEvvar", population: 200 },
-        { name: "Dikke", population: 300 }
-      ],
-      people: ["Jaywardene", "Atapatu", "Rantunga"]
-    },
-    {
-      name: "Nepal",
-      population: 100,
-      states: [
-        { name: "Taka", population: 100 },
-        { name: "Branmha", population: 200 },
-        { name: "Debe", population: 300 }
-      ],
-      people: ["Koirala", "prachand", "abe"]
-    }
-  ];
-
-  const [countries, setCountries] = useState(list);
+const HomeToConnect = ({ countries }) => {
   const [addCountryFlag, setAddCountryFlag] = useState(false);
 
   const onClickAddCountry = () => {
@@ -63,13 +30,6 @@ export default () => {
 
     setCountries(newList);
     setAddCountryFlag(false);
-  };
-
-  const addState = () => {
-    const newCountries = [...countries];
-    const nepal = countries[2];
-    nepal.states.push({ name: "DABA", population: 4500 });
-    setCountries(newCountries);
   };
 
   return (
@@ -98,15 +58,23 @@ export default () => {
             <th>Population</th>
           </tr>
         </thead>
-        {countries.map((c, i) => (
-          <Country
-            key={i}
-            name={c.name}
-            population={c.population}
-            states={c.states}
-          />
-        ))}
+        {countries &&
+          countries.map((c, i) => (
+            <Country
+              key={i}
+              name={c.name}
+              population={c.population}
+              states={c.states}
+            />
+          ))}
       </table>
     </div>
   );
 };
+
+const mapStateToProps = state => {
+  console.log({ state });
+  return { countries: state.countries };
+};
+
+export default connect(mapStateToProps)(HomeToConnect);
