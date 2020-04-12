@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Country from "./country";
-import AddCountryFlag from "./addCountry";
+import AddCountry from "./addCountry";
 import Container from "@material-ui/core/Container";
 import { connect } from "react-redux";
 
@@ -46,7 +46,7 @@ const HomeToConnect = ({ countries }) => {
 
       {addCountryFlag && (
         <Container>
-          <AddCountryFlag onSubmit={addCountry} onCancel={onCancelAddCountry} />
+          <AddCountry onSubmit={addCountry} onCancel={onCancelAddCountry} />
         </Container>
       )}
 
