@@ -13,13 +13,10 @@ const HomeToConnect = ({
   addCountryAction,
   removeCountryAction
 }) => {
-  // console.log({ countries });
-
   const [addCountryFlag, setAddCountryFlag] = useState(false);
 
   const onClickAddCountry = () => {
     setAddCountryFlag(true);
-    // addCountryAction();
   };
 
   const onCancelAddCountry = () => {

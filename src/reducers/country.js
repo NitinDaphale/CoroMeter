@@ -43,7 +43,6 @@ const newCountry = {
 };
 
 function countries(state = initialCountries, action) {
-  console.log({ action });
   switch (action.type) {
     case "COUNTRY_ADD":
       return [...state, newCountry];
