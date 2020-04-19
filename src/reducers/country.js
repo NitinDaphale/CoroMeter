@@ -31,10 +31,21 @@ const initialCountries = [
   }
 ];
 
+const newCountry = {
+  name: "Bhutan",
+  population: 100,
+  states: [
+    { name: "Taka", population: 100 },
+    { name: "Branmha", population: 200 },
+    { name: "Debe", population: 300 }
+  ],
+  people: ["Koirala", "prachand", "abe"]
+};
+
 function countries(state = initialCountries, action) {
   switch (action.type) {
-    case "Add":
-      return { ...state };
+    case "COUNTRY_ADD":
+      return [...state, newCountry];
     default:
       return state;
   }
