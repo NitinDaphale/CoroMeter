@@ -3,9 +3,16 @@ import Country from "./country";
 import AddCountry from "./addCountry";
 import Container from "@material-ui/core/Container";
 import { connect } from "react-redux";
-import { addCountryAction } from "./actionCreators/country";
+import {
+  addCountry as addCountryAction,
+  removeCountry as removeCountryAction
+} from "./actionCreators/country";
 
-const HomeToConnect = ({ countries, addCountryAction }) => {
+const HomeToConnect = ({
+  countries,
+  addCountryAction,
+  removeCountryAction
+}) => {
   // console.log({ countries });
 
   const [addCountryFlag, setAddCountryFlag] = useState(false);
@@ -21,18 +28,6 @@ const HomeToConnect = ({ countries, addCountryAction }) => {
 
   const addCountry = () => {
     addCountryAction();
-    // const newList = [...countries];
-    // newList.push({
-    //   name: "Bhutan",
-    //   population: 100,
-    //   states: [
-    //     { name: "Taka", population: 100 },
-    //     { name: "Branmha", population: 200 },
-    //     { name: "Debe", population: 300 }
-    //   ],
-    //   people: ["Koirala", "prachand", "abe"]
-    // });
-
     setAddCountryFlag(false);
   };
 
@@ -66,9 +61,11 @@ const HomeToConnect = ({ countries, addCountryAction }) => {
           countries.map((c, i) => (
             <Country
               key={i}
+              index={i}
               name={c.name}
               population={c.population}
               states={c.states}
+              removeCountryAction={removeCountryAction}
             />
           ))}
       </table>
@@ -77,11 +74,10 @@ const HomeToConnect = ({ countries, addCountryAction }) => {
 };
 
 const mapStateToProps = state => {
-  console.log({ state });
   return { countries: state.countries };
 };
 
-const mapActionCreatorsToProps = { addCountryAction };
+const mapActionCreatorsToProps = { addCountryAction, removeCountryAction };
 
 export default connect(
   mapStateToProps,

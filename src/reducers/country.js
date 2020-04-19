@@ -43,9 +43,16 @@ const newCountry = {
 };
 
 function countries(state = initialCountries, action) {
+  console.log({ action });
   switch (action.type) {
     case "COUNTRY_ADD":
       return [...state, newCountry];
+    case "COUNTRY_REMOVE":
+      const filterCountries = state.filter((c, i) => {
+        return i !== action.index;
+      });
+      console.log({ filterCountries });
+      return filterCountries;
     default:
       return state;
   }
